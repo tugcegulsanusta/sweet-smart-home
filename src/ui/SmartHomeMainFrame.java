@@ -13,6 +13,7 @@ import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import model.devices.AirConditioner;
@@ -24,7 +25,7 @@ import service.TemperatureDeviceService;
 
 public class SmartHomeMainFrame {
 
-	public List<JPanel> devicePanels = new ArrayList<>();
+	public List<AbstractDevicePanel> devicePanels = new ArrayList<>();
 	private JFrame frmSweetSmartHome;
 	private JPanel leftPanel;
 	private JPanel centerPanel;
@@ -68,7 +69,7 @@ public class SmartHomeMainFrame {
 		frmSweetSmartHome.setForeground(new Color(192, 192, 192));
 		frmSweetSmartHome.setTitle("Sweet Smart Home");
 		frmSweetSmartHome.setIconImage(ImageIO.read(ClassLoader.getSystemResource("logo.png")));
-		frmSweetSmartHome.setBounds(100, 100, 1000, 700);
+		frmSweetSmartHome.setBounds(100, 100, 1200, 900);
 		frmSweetSmartHome.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmSweetSmartHome.getContentPane().setLayout(new BorderLayout(0, 0));
 
@@ -85,10 +86,9 @@ public class SmartHomeMainFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				AirConditioner airConditioner = TemperatureDeviceService.SINGLETON.addAirConditioner();
-				AirConditionerPanel airConditionerPanel = new AirConditionerPanel(airConditioner);
-				devicePanels.add(airConditionerPanel);
-				centerPanel.add(airConditionerPanel);
-				centerPanel.revalidate();
+				AirConditionerPanel airConditionerPanel = new AirConditionerPanel(airConditioner,
+						SmartHomeMainFrame.this);
+				addPanel(airConditionerPanel);
 			}
 		});
 		leftPanel.add(airConditionerBtn);
@@ -98,10 +98,8 @@ public class SmartHomeMainFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Fridge fridge = TemperatureDeviceService.SINGLETON.addFridge();
-				FridgePanel fridgePanel = new FridgePanel(fridge);
-				devicePanels.add(fridgePanel);
-				centerPanel.add(fridgePanel);
-				centerPanel.revalidate();
+				FridgePanel fridgePanel = new FridgePanel(fridge, SmartHomeMainFrame.this);
+				addPanel(fridgePanel);
 			}
 		});
 		leftPanel.add(addFridgeBtn);
@@ -111,10 +109,8 @@ public class SmartHomeMainFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				DishWasher dishWasher = ProgramDeviceService.SINGLETON.addDishWasher();
-				DishWasherPanel dishWasherPanel = new DishWasherPanel(dishWasher);
-				devicePanels.add(dishWasherPanel);
-				centerPanel.add(dishWasherPanel);
-				centerPanel.revalidate();
+				DishWasherPanel dishWasherPanel = new DishWasherPanel(dishWasher, SmartHomeMainFrame.this);
+				addPanel(dishWasherPanel);
 			}
 		});
 
@@ -125,10 +121,9 @@ public class SmartHomeMainFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				WashingMachine washingMachine = ProgramDeviceService.SINGLETON.addWashingMachine();
-				WashingMachinePanel washingMachinePanel = new WashingMachinePanel(washingMachine);
-				devicePanels.add(washingMachinePanel);
-				centerPanel.add(washingMachinePanel);
-				centerPanel.revalidate();
+				WashingMachinePanel washingMachinePanel = new WashingMachinePanel(washingMachine,
+						SmartHomeMainFrame.this);
+				addPanel(washingMachinePanel);
 			}
 		});
 
@@ -143,6 +138,23 @@ public class SmartHomeMainFrame {
 
 		JButton btnSaveButton_1 = new JButton("Save");
 		northPanel.add(btnSaveButton_1);
+	}
+
+	public void removePanel(AbstractDevicePanel devicePanel) {
+		devicePanels.remove(devicePanel);
+		centerPanel.remove(devicePanel);
+		centerPanel.revalidate();
+		centerPanel.repaint();
+	}
+
+	public void addPanel(AbstractDevicePanel devicePanel) {
+		if (devicePanels.size() < 6) {
+			devicePanels.add(devicePanel);
+			centerPanel.add(devicePanel);
+			centerPanel.revalidate();
+		} else {
+			JOptionPane.showMessageDialog(centerPanel, "Device panels reached its limits!");
+		}
 	}
 
 }

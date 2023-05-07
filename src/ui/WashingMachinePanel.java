@@ -1,23 +1,20 @@
 package ui;
 
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 import model.devices.WashingMachine;
 
-public class WashingMachinePanel extends JPanel {
+public class WashingMachinePanel extends AbstractDevicePanel {
 	private final WashingMachine washingMachine;
 
-	public WashingMachinePanel(WashingMachine washingMachine) {
+	public WashingMachinePanel(WashingMachine washingMachine, SmartHomeMainFrame mainFrame) {
+		super(mainFrame);
 		System.out.println("washingMachine" + washingMachine);
 		this.washingMachine = washingMachine;
 
@@ -35,16 +32,6 @@ public class WashingMachinePanel extends JPanel {
 		setSize(300, 300);
 		setLayout(null);
 
-		JButton deleteButton = new JButton("Delete");
-		deleteButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if (e.getSource() == deleteButton) {
-
-				}
-			}
-		});
-		deleteButton.setBounds(201, 5, 89, 23);
 		add(deleteButton);
 		setVisible(true);
 
