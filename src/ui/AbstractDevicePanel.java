@@ -44,13 +44,11 @@ public abstract class AbstractDevicePanel extends JPanel {
 		statusLabel.setBounds(201, 50, 150, 50);
 		add(statusLabel);
 
-		// array of string containing cities
-
 		Object[] statuses = statefulInterface.getAvailableStates().stream().toArray();
 
 		// create checkbox
 		statusBox = new JComboBox(statuses);
-		statusBox.setBounds(201, 100, 150, 30);
+		statusBox.setBounds(180, 100, 150, 30);
 		statusBox.addActionListener(new ActionListener() {
 
 			@Override
