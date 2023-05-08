@@ -7,6 +7,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.border.LineBorder;
 
 import model.devices.DishWasher;
 
@@ -16,6 +17,8 @@ public class DishWasherPanel extends AbstractDevicePanel {
 
 	public DishWasherPanel(DishWasher dishWasher, SmartHomeMainFrame mainFrame) {
 		super(mainFrame);
+
+		setBorder(new LineBorder(new Color(0, 64, 64), 5, true));
 		System.out.println("dishwasher" + dishWasher);
 		this.dishWasher = dishWasher;
 
@@ -23,7 +26,7 @@ public class DishWasherPanel extends AbstractDevicePanel {
 		try {
 			imageDishWasher = ImageIO.read(ClassLoader.getSystemResource("DishWasher.png"));
 			JLabel imageLabelDishWasher = new JLabel(new ImageIcon(imageDishWasher));
-			imageLabelDishWasher.setBounds(0, 0, imageDishWasher.getWidth(), imageDishWasher.getHeight());
+			imageLabelDishWasher.setBounds(10, 10, imageDishWasher.getWidth(), imageDishWasher.getHeight());
 			add(imageLabelDishWasher);
 		} catch (IOException e) {
 			e.printStackTrace();
