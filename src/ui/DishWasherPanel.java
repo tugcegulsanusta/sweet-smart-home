@@ -16,7 +16,7 @@ public class DishWasherPanel extends AbstractDevicePanel {
 	private final DishWasher dishWasher;
 
 	public DishWasherPanel(DishWasher dishWasher, SmartHomeMainFrame mainFrame) {
-		super(mainFrame);
+		super(mainFrame, dishWasher);
 
 		setBorder(new LineBorder(new Color(0, 64, 64), 5, true));
 		System.out.println("dishwasher" + dishWasher);
@@ -35,8 +35,8 @@ public class DishWasherPanel extends AbstractDevicePanel {
 		setSize(300, 300);
 		setLayout(null);
 
-		add(deleteButton);
 		setVisible(true);
 
 	}
+
 }

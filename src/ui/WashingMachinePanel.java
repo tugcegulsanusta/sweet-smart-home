@@ -15,7 +15,7 @@ public class WashingMachinePanel extends AbstractDevicePanel {
 	private final WashingMachine washingMachine;
 
 	public WashingMachinePanel(WashingMachine washingMachine, SmartHomeMainFrame mainFrame) {
-		super(mainFrame);
+		super(mainFrame, washingMachine);
 
 		setBorder(new LineBorder(new Color(0, 64, 64), 5, true));
 		System.out.println("washingMachine" + washingMachine);
@@ -35,7 +35,6 @@ public class WashingMachinePanel extends AbstractDevicePanel {
 		setSize(300, 300);
 		setLayout(null);
 
-		add(deleteButton);
 		setVisible(true);
 
 	}

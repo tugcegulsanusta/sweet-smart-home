@@ -16,7 +16,7 @@ public class FridgePanel extends AbstractDevicePanel {
 	private final Fridge fridge;
 
 	public FridgePanel(Fridge fridge, SmartHomeMainFrame mainFrame) {
-		super(mainFrame);
+		super(mainFrame, fridge);
 		setForeground(new Color(128, 128, 128));
 
 		setBorder(new LineBorder(new Color(0, 64, 64), 5, true));
@@ -37,7 +37,6 @@ public class FridgePanel extends AbstractDevicePanel {
 		setSize(300, 300);
 		setLayout(null);
 
-		add(deleteButton);
 		setVisible(true);
 	}
 

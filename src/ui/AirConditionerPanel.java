@@ -16,7 +16,7 @@ public class AirConditionerPanel extends AbstractDevicePanel {
 	private final AirConditioner airConditioner;
 
 	public AirConditionerPanel(AirConditioner airConditioner, SmartHomeMainFrame mainFrame) {
-		super(mainFrame);
+		super(mainFrame, airConditioner);
 		setForeground(new Color(0, 64, 64));
 
 		setBorder(new LineBorder(new Color(0, 64, 64), 5, true));
@@ -36,7 +36,8 @@ public class AirConditionerPanel extends AbstractDevicePanel {
 		setSize(300, 300);
 		setLayout(null);
 
-		add(deleteButton);
 		setVisible(true);
+
 	}
+
 }

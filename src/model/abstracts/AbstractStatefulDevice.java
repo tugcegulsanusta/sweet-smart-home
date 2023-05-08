@@ -5,17 +5,17 @@ import model.enums.ProgramType;
 import model.interfaces.StatefulInterface;
 
 public abstract class AbstractStatefulDevice implements StatefulInterface {
-    protected DeviceState currentState = DeviceState.CLOSED;
+	protected DeviceState currentState = DeviceState.CLOSED;
 
-    protected ProgramType currentProgram = null;
+	protected ProgramType currentProgram = null;
 
-    @Override
-    public DeviceState getCurrentState() {
-        return currentState;
-    }
+	@Override
+	public DeviceState getCurrentState() {
+		return currentState;
+	}
 
-    @Override
-    public void setCurrentState(DeviceState deviceState){
-        this.currentState = deviceState;
-    }
+	@Override
+	public void setCurrentState(DeviceState deviceState) {
+		this.currentState = deviceState;
+	}
 }
