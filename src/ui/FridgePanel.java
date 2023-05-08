@@ -7,21 +7,50 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JSlider;
 import javax.swing.border.LineBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import model.devices.Fridge;
 
 public class FridgePanel extends AbstractDevicePanel {
-
+	protected final JLabel temperatureLabel;
+	private JSlider temperatureSlider;
 	private final Fridge fridge;
 
 	public FridgePanel(Fridge fridge, SmartHomeMainFrame mainFrame) {
 		super(mainFrame, fridge);
-		setForeground(new Color(128, 128, 128));
 
-		setBorder(new LineBorder(new Color(0, 64, 64), 5, true));
-		System.out.println("fridge" + fridge);
 		this.fridge = fridge;
+		this.temperatureLabel = new JLabel();
+		this.temperatureLabel.setBounds(15, 150, 150, 50);
+		add(temperatureLabel);
+		refreshTemperature();
+
+		this.temperatureSlider = new JSlider(fridge.getLowerBound(), fridge.getUpperBound());
+
+		this.temperatureSlider.setPaintTrack(true);
+		this.temperatureSlider.setPaintTicks(true);
+		this.temperatureSlider.setPaintLabels(true);
+
+		// set spacing
+		this.temperatureSlider.setMajorTickSpacing(2);
+		this.temperatureSlider.setBounds(180, 150, 150, 50);
+		add(temperatureSlider);
+
+		temperatureSlider.addChangeListener(new ChangeListener() {
+
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				int newTemp = temperatureSlider.getValue();
+				fridge.setTemperature(newTemp);
+				refreshTemperature();
+				FridgePanel.this.revalidate();
+
+			}
+
+		});
 
 		BufferedImage imageFridge;
 		try {
@@ -33,11 +62,24 @@ public class FridgePanel extends AbstractDevicePanel {
 			e.printStackTrace();
 
 		}
+
+		setForeground(new Color(128, 128, 128));
+		setBorder(new LineBorder(new Color(0, 64, 64), 5, true));
+		System.out.println("fridge" + fridge);
+
 		setBackground(new Color(192, 192, 192));
 		setSize(300, 300);
 		setLayout(null);
 
 		setVisible(true);
+	}
+
+	private void refreshTemperature() {
+		temperatureLabel.setText("Temperature: " + getTemperature());
+	}
+
+	protected int getTemperature() {
+		return fridge.getTemperature();
 	}
 
 }
