@@ -20,8 +20,7 @@ import model.devices.AirConditioner;
 import model.devices.DishWasher;
 import model.devices.Fridge;
 import model.devices.WashingMachine;
-import service.ProgramDeviceService;
-import service.TemperatureDeviceService;
+import service.DeviceService;
 
 public class SmartHomeMainFrame {
 
@@ -85,7 +84,7 @@ public class SmartHomeMainFrame {
 		airConditionerBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				AirConditioner airConditioner = TemperatureDeviceService.SINGLETON.addAirConditioner();
+				AirConditioner airConditioner = DeviceService.SINGLETON.addAirConditioner();
 				AirConditionerPanel airConditionerPanel = new AirConditionerPanel(airConditioner,
 						SmartHomeMainFrame.this);
 				addPanel(airConditionerPanel);
@@ -97,7 +96,7 @@ public class SmartHomeMainFrame {
 		addFridgeBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Fridge fridge = TemperatureDeviceService.SINGLETON.addFridge();
+				Fridge fridge = DeviceService.SINGLETON.addFridge();
 				FridgePanel fridgePanel = new FridgePanel(fridge, SmartHomeMainFrame.this);
 				addPanel(fridgePanel);
 			}
@@ -108,7 +107,7 @@ public class SmartHomeMainFrame {
 		addDishWasherBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				DishWasher dishWasher = ProgramDeviceService.SINGLETON.addDishWasher();
+				DishWasher dishWasher = DeviceService.SINGLETON.addDishWasher();
 				DishWasherPanel dishWasherPanel = new DishWasherPanel(dishWasher, SmartHomeMainFrame.this);
 				addPanel(dishWasherPanel);
 			}
@@ -120,7 +119,7 @@ public class SmartHomeMainFrame {
 		addWashingMachineBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				WashingMachine washingMachine = ProgramDeviceService.SINGLETON.addWashingMachine();
+				WashingMachine washingMachine = DeviceService.SINGLETON.addWashingMachine();
 				WashingMachinePanel washingMachinePanel = new WashingMachinePanel(washingMachine,
 						SmartHomeMainFrame.this);
 				addPanel(washingMachinePanel);
