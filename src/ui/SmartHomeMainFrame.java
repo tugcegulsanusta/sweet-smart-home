@@ -20,6 +20,7 @@ import model.devices.AirConditioner;
 import model.devices.DishWasher;
 import model.devices.Fridge;
 import model.devices.WashingMachine;
+import model.interfaces.StatefulInterface;
 import service.DeviceService;
 
 public class SmartHomeMainFrame {
@@ -135,8 +136,30 @@ public class SmartHomeMainFrame {
 		JButton btnLoadButton = new JButton("Load");
 		northPanel.add(btnLoadButton);
 
-		JButton btnSaveButton_1 = new JButton("Save");
-		northPanel.add(btnSaveButton_1);
+		btnLoadButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+			}
+
+		});
+
+		JButton btnSaveButton = new JButton("Save");
+		northPanel.add(btnSaveButton);
+
+		btnSaveButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				List<StatefulInterface> devices = devicePanels.stream().map(AbstractDevicePanel::getStatefulInterface)
+						.toList();
+				String path = "C:\\Users\\eshan\\eclipse-workspace\\test.txt";
+				DeviceService.saveAll(devices, path);
+
+			}
+
+		});
 	}
 
 	public void removePanel(AbstractDevicePanel devicePanel) {

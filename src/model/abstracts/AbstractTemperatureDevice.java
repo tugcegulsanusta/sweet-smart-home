@@ -18,11 +18,6 @@ public abstract class AbstractTemperatureDevice extends AbstractStatefulDevice i
 
 	@Override
 	public void setTemperature(int temperature) {
-		if (getUpperBound() >= temperature && getLowerBound() <= temperature) {
-			this.currentTemp = temperature;
-		} else {
-			System.err.println("Please provide a valid temprature for your " + getDeviceType());
-		}
-
+		this.currentTemp = temperature;
 	}
 }

@@ -72,4 +72,8 @@ public abstract class AbstractDevicePanel extends JPanel {
 		return statefulInterface.getCurrentState().toString();
 	}
 
+	public StatefulInterface getStatefulInterface() {
+		return statefulInterface;
+	}
+
 }
