@@ -13,6 +13,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import model.devices.Fridge;
+import model.enums.DeviceState;
 
 public class FridgePanel extends AbstractDevicePanel {
 	protected final JLabel temperatureLabel;
@@ -46,6 +47,9 @@ public class FridgePanel extends AbstractDevicePanel {
 				int newTemp = temperatureSlider.getValue();
 				fridge.setTemperature(newTemp);
 				refreshTemperature();
+				fridge.setCurrentState(DeviceState.RUNNING);
+				refreshStatus();
+				FridgePanel.this.statusLabel.repaint();
 				FridgePanel.this.revalidate();
 
 			}
@@ -76,6 +80,10 @@ public class FridgePanel extends AbstractDevicePanel {
 
 	private void refreshTemperature() {
 		temperatureLabel.setText("Temperature: " + getTemperature());
+	}
+
+	private void refreshStatus() {
+		statusLabel.setText("Status: " + getCurrentState());
 	}
 
 	protected int getTemperature() {

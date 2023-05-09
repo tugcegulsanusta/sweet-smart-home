@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.border.LineBorder;
 
 import model.devices.WashingMachine;
+import model.enums.DeviceState;
 import model.enums.ProgramType;
 
 public class WashingMachinePanel extends AbstractDevicePanel {
@@ -44,6 +45,9 @@ public class WashingMachinePanel extends AbstractDevicePanel {
 				ProgramType newProgram = (ProgramType) programBox.getSelectedItem();
 				washingMachine.setProgram(newProgram);
 				refreshProgram();
+				washingMachine.setCurrentState(DeviceState.RUNNING);
+				refreshStatus();
+				WashingMachinePanel.this.statusLabel.repaint();
 				WashingMachinePanel.this.revalidate();
 
 			}
@@ -75,6 +79,10 @@ public class WashingMachinePanel extends AbstractDevicePanel {
 
 	private void refreshProgram() {
 		programLabel.setText("Program: " + getProgram());
+	}
+
+	private void refreshStatus() {
+		statusLabel.setText("Status: " + getCurrentState());
 	}
 
 	protected String getProgram() {

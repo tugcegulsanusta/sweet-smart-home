@@ -1,5 +1,6 @@
 package model.abstracts;
 
+import model.enums.DeviceState;
 import model.enums.ProgramType;
 import model.interfaces.ProgramInterface;
 
@@ -21,6 +22,9 @@ public abstract class AbstractProgramDevice extends AbstractStatefulDevice imple
 	@Override
 	public void setProgram(ProgramType selectedProgram) {
 		this.currentProgram = selectedProgram;
+		if (this.currentState == DeviceState.OPENED) {
+			setCurrentState(DeviceState.RUNNING);
+		}
 
 	}
 

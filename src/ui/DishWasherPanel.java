@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.border.LineBorder;
 
 import model.devices.DishWasher;
+import model.enums.DeviceState;
 import model.enums.ProgramType;
 
 public class DishWasherPanel extends AbstractDevicePanel {
@@ -44,6 +45,9 @@ public class DishWasherPanel extends AbstractDevicePanel {
 				ProgramType newProgram = (ProgramType) programBox.getSelectedItem();
 				dishWasher.setProgram(newProgram);
 				refreshProgram();
+				dishWasher.setCurrentState(DeviceState.RUNNING);
+				refreshStatus();
+				DishWasherPanel.this.statusLabel.repaint();
 				DishWasherPanel.this.revalidate();
 
 			}
@@ -74,6 +78,10 @@ public class DishWasherPanel extends AbstractDevicePanel {
 
 	private void refreshProgram() {
 		programLabel.setText("Program: " + getProgram());
+	}
+
+	private void refreshStatus() {
+		statusLabel.setText("Status: " + getCurrentState());
 	}
 
 	protected String getProgram() {

@@ -13,6 +13,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import model.devices.AirConditioner;
+import model.enums.DeviceState;
 
 public class AirConditionerPanel extends AbstractDevicePanel {
 	protected final JLabel temperatureLabel;
@@ -47,6 +48,9 @@ public class AirConditionerPanel extends AbstractDevicePanel {
 				int newTemp = temperatureSlider.getValue();
 				airConditioner.setTemperature(newTemp);
 				refreshTemperature();
+				airConditioner.setCurrentState(DeviceState.RUNNING);
+				refreshStatus();
+				AirConditionerPanel.this.statusLabel.repaint();
 				AirConditionerPanel.this.revalidate();
 
 			}
@@ -77,6 +81,10 @@ public class AirConditionerPanel extends AbstractDevicePanel {
 
 	private void refreshTemperature() {
 		temperatureLabel.setText("Temperature: " + getTemperature());
+	}
+
+	private void refreshStatus() {
+		statusLabel.setText("Status: " + getCurrentState());
 	}
 
 	protected int getTemperature() {

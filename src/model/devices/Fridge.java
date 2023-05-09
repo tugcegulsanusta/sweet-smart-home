@@ -12,7 +12,7 @@ public class Fridge extends AbstractTemperatureDevice implements TemperatureInte
 
 	@Override
 	public List<DeviceState> getAvailableStates() {
-		return Arrays.asList(DeviceState.OPENED, DeviceState.CLOSED);
+		return Arrays.asList(DeviceState.OPENED, DeviceState.CLOSED, DeviceState.RUNNING);
 	}
 
 	@Override
@@ -22,12 +22,12 @@ public class Fridge extends AbstractTemperatureDevice implements TemperatureInte
 
 	@Override
 	public int getUpperBound() {
-		return 6;
+		return 4;
 	}
 
 	@Override
 	public int getLowerBound() {
-		return 0;
+		return -2;
 	}
 
 }
