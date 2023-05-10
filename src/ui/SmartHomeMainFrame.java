@@ -141,6 +141,9 @@ public class SmartHomeMainFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
+				String path = "C:\\Users\\eshan\\eclipse-workspace\\test.txt";
+				DeviceService.load(path);
+
 			}
 
 		});

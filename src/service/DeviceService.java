@@ -1,6 +1,9 @@
 package service;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
@@ -55,6 +58,22 @@ public class DeviceService {
 		} catch (IOException e) {
 			System.err.format("IOException: %s%n", e);
 		}
+	}
+
+	public static JsonDataStructure load(String jsonFilePath) {
+		BufferedReader br;
+		JsonDataStructure myData = null;
+		try {
+			br = new BufferedReader(new FileReader(jsonFilePath));
+			myData = new Gson().fromJson(br, JsonDataStructure.class);
+
+		} catch (FileNotFoundException e) {
+
+			e.printStackTrace();
+		}
+		System.err.println(myData);
+		return myData;
+
 	}
 
 }
