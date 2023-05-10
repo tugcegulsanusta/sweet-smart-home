@@ -12,6 +12,7 @@ import model.devices.DishWasher;
 import model.devices.Fridge;
 import model.devices.WashingMachine;
 import model.interfaces.StatefulInterface;
+import model.json.JsonDataStructure;
 
 public class DeviceService {
 	public static final DeviceService SINGLETON = new DeviceService();
@@ -42,9 +43,14 @@ public class DeviceService {
 	}
 
 	public static void saveAll(List<StatefulInterface> devices, String jsonFilePath) {
+		JsonDataStructure dataStructure = new JsonDataStructure();
+		for (StatefulInterface si : devices) {
+			dataStructure.add(si);
+		}
+
 		try (FileWriter writer = new FileWriter(jsonFilePath); BufferedWriter bw = new BufferedWriter(writer)) {
 			Gson gson = new Gson();
-			bw.write(gson.toJson(devices));
+			bw.write(gson.toJson(dataStructure));
 
 		} catch (IOException e) {
 			System.err.format("IOException: %s%n", e);

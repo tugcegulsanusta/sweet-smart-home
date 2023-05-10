@@ -10,6 +10,7 @@ import model.interfaces.ProgramInterface;
  * has state + programs.
  */
 public abstract class AbstractProgramDevice extends AbstractStatefulDevice implements ProgramInterface {
+	protected ProgramType currentProgram;
 
 	public AbstractProgramDevice(ProgramType programType) {
 		this.currentProgram = programType;
