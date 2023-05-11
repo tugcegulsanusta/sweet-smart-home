@@ -21,10 +21,10 @@ import model.devices.DishWasher;
 import model.devices.Fridge;
 import model.devices.WashingMachine;
 import model.interfaces.StatefulInterface;
+import model.json.JsonDataStructure;
 import service.DeviceService;
 
 public class SmartHomeMainFrame {
-
 	public List<AbstractDevicePanel> devicePanels = new ArrayList<>();
 	private JFrame frmSweetSmartHome;
 	private JPanel leftPanel;
@@ -34,13 +34,14 @@ public class SmartHomeMainFrame {
 	/**
 	 * Launch the application.
 	 */
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			@Override
 			public void run() {
 				try {
-					SmartHomeMainFrame window = new SmartHomeMainFrame();
-					window.frmSweetSmartHome.setVisible(true);
+					SmartHomeMainFrame smartHomeMainFrame = new SmartHomeMainFrame();
+					smartHomeMainFrame.frmSweetSmartHome.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -52,6 +53,7 @@ public class SmartHomeMainFrame {
 	 * Create the application.
 	 */
 	public SmartHomeMainFrame() {
+
 		try {
 			initialize();
 		} catch (IOException e) {
@@ -85,10 +87,7 @@ public class SmartHomeMainFrame {
 		airConditionerBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				AirConditioner airConditioner = DeviceService.SINGLETON.addAirConditioner();
-				AirConditionerPanel airConditionerPanel = new AirConditionerPanel(airConditioner,
-						SmartHomeMainFrame.this);
-				addPanel(airConditionerPanel);
+				addAirConditioner(DeviceService.SINGLETON.newAirConditioner());
 			}
 		});
 		leftPanel.add(airConditionerBtn);
@@ -97,9 +96,7 @@ public class SmartHomeMainFrame {
 		addFridgeBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Fridge fridge = DeviceService.SINGLETON.addFridge();
-				FridgePanel fridgePanel = new FridgePanel(fridge, SmartHomeMainFrame.this);
-				addPanel(fridgePanel);
+				addFridge(DeviceService.SINGLETON.newFridge());
 			}
 		});
 		leftPanel.add(addFridgeBtn);
@@ -108,9 +105,8 @@ public class SmartHomeMainFrame {
 		addDishWasherBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				DishWasher dishWasher = DeviceService.SINGLETON.addDishWasher();
-				DishWasherPanel dishWasherPanel = new DishWasherPanel(dishWasher, SmartHomeMainFrame.this);
-				addPanel(dishWasherPanel);
+				addDishWasher(DeviceService.SINGLETON.newDishWasher());
+
 			}
 		});
 
@@ -120,10 +116,7 @@ public class SmartHomeMainFrame {
 		addWashingMachineBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				WashingMachine washingMachine = DeviceService.SINGLETON.addWashingMachine();
-				WashingMachinePanel washingMachinePanel = new WashingMachinePanel(washingMachine,
-						SmartHomeMainFrame.this);
-				addPanel(washingMachinePanel);
+				addWashingMachine(DeviceService.SINGLETON.newWashingMachine());
 			}
 		});
 
@@ -140,9 +133,13 @@ public class SmartHomeMainFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
+				devicePanels.forEach(SmartHomeMainFrame.this::removePanel);
 				String path = "C:\\Users\\eshan\\eclipse-workspace\\test.txt";
-				DeviceService.load(path);
+				JsonDataStructure jsonDataStructure = DeviceService.SINGLETON.load(path);
+				jsonDataStructure.getAirConditioners().forEach(SmartHomeMainFrame.this::addAirConditioner);
+				jsonDataStructure.getDishWashers().forEach(SmartHomeMainFrame.this::addDishWasher);
+				jsonDataStructure.getFridges().forEach(SmartHomeMainFrame.this::addFridge);
+				jsonDataStructure.getWashingMachines().forEach(SmartHomeMainFrame.this::addWashingMachine);
 
 			}
 
@@ -158,11 +155,32 @@ public class SmartHomeMainFrame {
 				List<StatefulInterface> devices = devicePanels.stream().map(AbstractDevicePanel::getStatefulInterface)
 						.toList();
 				String path = "C:\\Users\\eshan\\eclipse-workspace\\test.txt";
-				DeviceService.saveAll(devices, path);
+				DeviceService.SINGLETON.saveAll(devices, path);
 
 			}
 
 		});
+	}
+
+	protected void addAirConditioner(AirConditioner airConditioner) {
+		AirConditionerPanel airConditionerPanel = new AirConditionerPanel(airConditioner, SmartHomeMainFrame.this);
+		addPanel(airConditionerPanel);
+	}
+
+	protected void addFridge(Fridge fridge) {
+		FridgePanel fridgePanel = new FridgePanel(fridge, SmartHomeMainFrame.this);
+		addPanel(fridgePanel);
+	}
+
+	protected void addDishWasher(DishWasher dishWasher) {
+		DishWasherPanel dishWasherPanel = new DishWasherPanel(dishWasher, SmartHomeMainFrame.this);
+		addPanel(dishWasherPanel);
+	}
+
+	protected void addWashingMachine(WashingMachine washingMachine) {
+
+		WashingMachinePanel washingMachinePanel = new WashingMachinePanel(washingMachine, SmartHomeMainFrame.this);
+		addPanel(washingMachinePanel);
 	}
 
 	public void removePanel(AbstractDevicePanel devicePanel) {

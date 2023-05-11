@@ -24,28 +24,28 @@ public class DeviceService {
 
 	}
 
-	public DishWasher addDishWasher() {
+	public DishWasher newDishWasher() {
 
 		return new DishWasher();
 
 	}
 
-	public WashingMachine addWashingMachine() {
+	public WashingMachine newWashingMachine() {
 
 		return new WashingMachine();
 	}
 
-	public AirConditioner addAirConditioner() {
+	public AirConditioner newAirConditioner() {
 
 		return new AirConditioner();
 	}
 
-	public Fridge addFridge() {
+	public Fridge newFridge() {
 
 		return new Fridge();
 	}
 
-	public static void saveAll(List<StatefulInterface> devices, String jsonFilePath) {
+	public void saveAll(List<StatefulInterface> devices, String jsonFilePath) {
 		JsonDataStructure dataStructure = new JsonDataStructure();
 		for (StatefulInterface si : devices) {
 			dataStructure.add(si);
@@ -60,19 +60,15 @@ public class DeviceService {
 		}
 	}
 
-	public static JsonDataStructure load(String jsonFilePath) {
-		BufferedReader br;
-		JsonDataStructure myData = null;
+	public JsonDataStructure load(String jsonFilePath) {
+
 		try {
-			br = new BufferedReader(new FileReader(jsonFilePath));
-			myData = new Gson().fromJson(br, JsonDataStructure.class);
-
+			BufferedReader br = new BufferedReader(new FileReader(jsonFilePath));
+			return new Gson().fromJson(br, JsonDataStructure.class);
 		} catch (FileNotFoundException e) {
-
 			e.printStackTrace();
 		}
-		System.err.println(myData);
-		return myData;
+		return null;
 
 	}
 
