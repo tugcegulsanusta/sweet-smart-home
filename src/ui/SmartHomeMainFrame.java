@@ -206,9 +206,9 @@ public class SmartHomeMainFrame {
 				centerPanel.add(devicePanel);
 				centerPanel.revalidate();
 			}else {
-				throw new PanelException();
+				throw new PanelLimitException();
 			}
-		}catch (PanelException e){
+		}catch (PanelLimitException e){
 			JOptionPane.showMessageDialog(centerPanel, e.getMessage());
 		}
 
