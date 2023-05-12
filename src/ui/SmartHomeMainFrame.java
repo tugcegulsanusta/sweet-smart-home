@@ -200,13 +200,18 @@ public class SmartHomeMainFrame {
 	}
 
 	public void addPanel(AbstractDevicePanel devicePanel) {
-		if (devicePanels.size() < 6) {
-			devicePanels.add(devicePanel);
-			centerPanel.add(devicePanel);
-			centerPanel.revalidate();
-		} else {
-			JOptionPane.showMessageDialog(centerPanel, "Device panels reached its limits!");
+		try{
+			if (devicePanels.size() < 6) {
+				devicePanels.add(devicePanel);
+				centerPanel.add(devicePanel);
+				centerPanel.revalidate();
+			}else {
+				throw new PanelException();
+			}
+		}catch (PanelException e){
+			JOptionPane.showMessageDialog(centerPanel, e.getMessage());
 		}
+
 	}
 
 }
