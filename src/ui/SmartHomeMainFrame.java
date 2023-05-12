@@ -6,12 +6,14 @@ import java.awt.EventQueue;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -134,7 +136,10 @@ public class SmartHomeMainFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				devicePanels.forEach(SmartHomeMainFrame.this::removePanel);
-				String path = "C:\\Users\\eshan\\eclipse-workspace\\test.txt";
+				JFileChooser chooser = new JFileChooser();
+				chooser.showOpenDialog(null);
+				File file = chooser.getSelectedFile();
+				String path = file.getAbsolutePath();
 				JsonDataStructure jsonDataStructure = DeviceService.SINGLETON.load(path);
 				jsonDataStructure.getAirConditioners().forEach(SmartHomeMainFrame.this::addAirConditioner);
 				jsonDataStructure.getDishWashers().forEach(SmartHomeMainFrame.this::addDishWasher);
@@ -154,7 +159,11 @@ public class SmartHomeMainFrame {
 			public void actionPerformed(ActionEvent e) {
 				List<StatefulInterface> devices = devicePanels.stream().map(AbstractDevicePanel::getStatefulInterface)
 						.toList();
-				String path = "C:\\Users\\eshan\\eclipse-workspace\\test.txt";
+				JFileChooser chooser = new JFileChooser();
+				chooser.showOpenDialog(null);
+				File file = chooser.getSelectedFile();
+
+				String path = file.getAbsolutePath();
 				DeviceService.SINGLETON.saveAll(devices, path);
 
 			}
