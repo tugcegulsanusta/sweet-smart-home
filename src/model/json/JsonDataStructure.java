@@ -16,6 +16,9 @@ public class JsonDataStructure {
 	private List<Fridge> fridges;
 	private List<WashingMachine> washingMachines;
 
+	/**
+	 * Takes DeviceTypes,turns into a list for that Device
+	 */
 	public JsonDataStructure() {
 		airConditioners = new ArrayList<>();
 		dishWashers = new ArrayList<>();
@@ -23,6 +26,10 @@ public class JsonDataStructure {
 		washingMachines = new ArrayList<>();
 	}
 
+	/**
+	 * @param si (Stateful Interface-si)
+	 * switch between Devices and add to corresponding list
+	 */
 	public void add(StatefulInterface si) {
 		switch (si.getDeviceType()) {
 		case AirConditioner:

@@ -10,21 +10,33 @@ import model.interfaces.TemperatureInterface;
 
 public class Fridge extends AbstractTemperatureDevice implements TemperatureInterface {
 
+	/**
+	 * @return DeviceState - Enum
+	 */
 	@Override
 	public List<DeviceState> getAvailableStates() {
 		return Arrays.asList(DeviceState.OPENED, DeviceState.CLOSED, DeviceState.RUNNING);
 	}
 
+	/**
+	 * @return DeviceType-Fridge-Enum
+	 */
 	@Override
 	public DeviceType getDeviceType() {
 		return DeviceType.Fridge;
 	}
 
+	/**
+	 * @return upperBound for Fridge
+	 */
 	@Override
 	public int getUpperBound() {
 		return 4;
 	}
 
+	/**
+	 * @return lowerBound for Fridge
+	 */
 	@Override
 	public int getLowerBound() {
 		return -2;

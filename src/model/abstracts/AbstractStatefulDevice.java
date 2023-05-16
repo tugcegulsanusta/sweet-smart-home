@@ -3,17 +3,15 @@ package model.abstracts;
 import model.enums.DeviceState;
 import model.interfaces.StatefulInterface;
 
+/**
+ *  AbstractStateful class is created for all devices. Devices has DeviceState enums : OPENED, CLOSED, RUNNING, PAUSED.
+ *  Paused only applicable for ProgramDevice: DishWasher, WashingMachine
+ */
+
 public abstract class AbstractStatefulDevice implements StatefulInterface {
+
+	//sets initial state as CLOSED
 	protected DeviceState currentState = DeviceState.CLOSED;
-	private int ordinal;
-
-	public int getOrdinal() {
-		return ordinal;
-	}
-
-	public void setOrdinal(int ordinal) {
-		this.ordinal = ordinal;
-	}
 
 	@Override
 	public DeviceState getCurrentState() {
