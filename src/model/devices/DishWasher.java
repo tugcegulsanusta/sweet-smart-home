@@ -21,8 +21,8 @@ public class DishWasher extends AbstractProgramDevice implements ProgramInterfac
 	 */
 	@Override
 	public List<ProgramType> getAvailablePrograms() {
-		return Arrays.asList(ProgramType.YOGUN70, ProgramType.NORMAL65, ProgramType.ECO50, ProgramType.HASSAS40,
-				ProgramType.HIZLI45);
+		return Arrays.asList(ProgramType.DENSE70, ProgramType.NORMAL65, ProgramType.ECO50, ProgramType.GENTLE40,
+				ProgramType.QUICK45);
 	}
 
 	/**

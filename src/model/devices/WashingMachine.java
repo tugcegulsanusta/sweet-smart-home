@@ -22,8 +22,8 @@ public class WashingMachine extends AbstractProgramDevice implements ProgramInte
 	 */
 	@Override
 	public List<ProgramType> getAvailablePrograms() {
-		return Arrays.asList(ProgramType.PAMUKLULAR20, ProgramType.PAMUKLULAR40, ProgramType.PAMUKLULAR60,
-				ProgramType.PAMUKLULAR90, ProgramType.SENTETIKLER40, ProgramType.MIX40, ProgramType.HASSAS_IPEK30,
+		return Arrays.asList(ProgramType.COTTONS20, ProgramType.COTTONS40, ProgramType.COTTONS60,
+				ProgramType.COTTONS90, ProgramType.SYNTHETICS40, ProgramType.MIX40, ProgramType.DELICATE30,
 				ProgramType.YUNLULER30);
 	}
 

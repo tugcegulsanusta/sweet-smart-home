@@ -39,9 +39,7 @@ public class SmartHomeMainFrame {
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
-			/**
-			 *
-			 */
+
 			@Override
 			public void run() {
 				try {
@@ -174,27 +172,47 @@ public class SmartHomeMainFrame {
 		});
 	}
 
+	/**
+	 * @param airConditioner
+	 * add AirConditioner to Panel
+	 */
 	protected void addAirConditioner(AirConditioner airConditioner) {
 		AirConditionerPanel airConditionerPanel = new AirConditionerPanel(airConditioner, SmartHomeMainFrame.this);
 		addPanel(airConditionerPanel);
 	}
 
+	/**
+	 * @param fridge
+	 * add Fridge to Panel
+	 */
 	protected void addFridge(Fridge fridge) {
 		FridgePanel fridgePanel = new FridgePanel(fridge, SmartHomeMainFrame.this);
 		addPanel(fridgePanel);
 	}
 
+	/**
+	 * @param dishWasher
+	 * add DishWasher to Panel
+	 */
 	protected void addDishWasher(DishWasher dishWasher) {
 		DishWasherPanel dishWasherPanel = new DishWasherPanel(dishWasher, SmartHomeMainFrame.this);
 		addPanel(dishWasherPanel);
 	}
 
+	/**
+	 * @param washingMachine
+	 * add WashingMachine to Panel
+	 */
 	protected void addWashingMachine(WashingMachine washingMachine) {
 
 		WashingMachinePanel washingMachinePanel = new WashingMachinePanel(washingMachine, SmartHomeMainFrame.this);
 		addPanel(washingMachinePanel);
 	}
 
+	/**
+	 * @param devicePanel
+	 * removes Panel with deleteButton Action
+	 */
 	public void removePanel(AbstractDevicePanel devicePanel) {
 		devicePanels.remove(devicePanel);
 		centerPanel.remove(devicePanel);
@@ -202,6 +220,11 @@ public class SmartHomeMainFrame {
 		centerPanel.repaint();
 	}
 
+	/**
+	 * @param devicePanel
+	 * add panel to centerPanel
+	 * throw PanelLimitException ( limit <=6 )
+	 */
 	public void addPanel(AbstractDevicePanel devicePanel) {
 		try{
 			if (devicePanels.size() < 6) {

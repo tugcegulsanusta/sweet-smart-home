@@ -45,6 +45,10 @@ public class DeviceService {
 		return new Fridge();
 	}
 
+	/**
+	 * @param devices
+	 * @param jsonFilePath
+	 */
 	public void saveAll(List<StatefulInterface> devices, String jsonFilePath) {
 		JsonDataStructure dataStructure = new JsonDataStructure();
 		for (StatefulInterface si : devices) {
