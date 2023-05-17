@@ -134,6 +134,9 @@ public class SmartHomeMainFrame {
 
 		btnLoadButton.addActionListener(new ActionListener() {
 
+			/**
+			 * @param e the event to be processed to btnLoadButton
+			 */
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				devicePanels.forEach(SmartHomeMainFrame.this::removePanel);
@@ -156,6 +159,9 @@ public class SmartHomeMainFrame {
 
 		btnSaveButton.addActionListener(new ActionListener() {
 
+			/**
+			 * @param e the event to be processed to btnSaveButton
+			 */
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				List<StatefulInterface> devices = devicePanels.stream().map(AbstractDevicePanel::getStatefulInterface)

@@ -8,17 +8,21 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-
 import model.enums.DeviceState;
 import model.interfaces.StatefulInterface;
+
+/**
+ * AbstractDevicePanel class created for devicePanels
+ * All device has statusBox + statusLabel
+ * All device could be deleted from the system via deleteButton
+ * Imports StatefulInterface and DeviceState-Enum to access common methods
+ */
 
 public abstract class AbstractDevicePanel extends JPanel {
 
 	protected final SmartHomeMainFrame mainFrame;
 	protected final StatefulInterface statefulInterface;
 	protected final JButton deleteButton;
-	private JTextField textField;
 	protected final JLabel statusLabel;
 	private JComboBox statusBox;
 

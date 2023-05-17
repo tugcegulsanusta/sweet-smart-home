@@ -18,15 +18,18 @@ import model.interfaces.StatefulInterface;
 import model.json.JsonDataStructure;
 
 public class DeviceService {
-	/**
-	 * ensures that a class can only have one object
-	 */
 	public static final DeviceService SINGLETON = new DeviceService();
 
 	private DeviceService() {
 
 	}
 
+
+	/**
+	 * newDeviceType convention
+	 * @return object for each device
+	 * used in SmartHomeMainFrame
+	 */
 	public DishWasher newDishWasher() {
 
 		return new DishWasher();
@@ -51,6 +54,7 @@ public class DeviceService {
 	/**
 	 * @param devices
 	 * @param jsonFilePath
+	 *
 	 */
 	public void saveAll(List<StatefulInterface> devices, String jsonFilePath) {
 		JsonDataStructure dataStructure = new JsonDataStructure();

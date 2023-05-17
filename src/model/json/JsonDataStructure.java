@@ -21,7 +21,7 @@ public class JsonDataStructure {
 	private List<WashingMachine> washingMachines;
 
 	/**
-	 * Takes DeviceTypes,turns into a list for that Device
+	 * Takes device List,creates new object corresponding List
 	 */
 	public JsonDataStructure() {
 		airConditioners = new ArrayList<>();
@@ -51,6 +51,9 @@ public class JsonDataStructure {
 		}
 	}
 
+	/**
+	 * getter/setter for each specific device list
+	 */
 	public List<AirConditioner> getAirConditioners() {
 		return this.airConditioners;
 	}
