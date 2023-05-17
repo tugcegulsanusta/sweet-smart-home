@@ -27,7 +27,7 @@ public class Fridge extends AbstractTemperatureDevice implements TemperatureInte
 	}
 
 	/**
-	 * @return upperBound for Fridge
+	 * @return int upperBound for Fridge
 	 */
 	@Override
 	public int getUpperBound() {
@@ -35,7 +35,7 @@ public class Fridge extends AbstractTemperatureDevice implements TemperatureInte
 	}
 
 	/**
-	 * @return lowerBound for Fridge
+	 * @return int lowerBound for Fridge
 	 */
 	@Override
 	public int getLowerBound() {

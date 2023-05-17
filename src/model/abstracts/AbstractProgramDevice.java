@@ -6,13 +6,14 @@ import model.interfaces.ProgramInterface;
 
 /**
  * AbstractProgramDevice class is created for programmable devices, which
- * extends AbstractStatefulDevices All device has a state, Programmable devices has state + programs.
+ * extends AbstractStatefulDevices all device has a state, Programmable devices has state + programs.
  */
 public abstract class AbstractProgramDevice extends AbstractStatefulDevice implements ProgramInterface {
 	protected ProgramType currentProgram;
 
 	/**
 	 * @param programType
+	 * Constructor
 	 */
 	public AbstractProgramDevice(ProgramType programType) {
 		this.currentProgram = programType;
@@ -20,6 +21,7 @@ public abstract class AbstractProgramDevice extends AbstractStatefulDevice imple
 
 	/**
 	 * @param selectedProgram
+	 * sets the currentProgram as selectedProgram
 	 */
 	@Override
 	public void setProgram(ProgramType selectedProgram) {

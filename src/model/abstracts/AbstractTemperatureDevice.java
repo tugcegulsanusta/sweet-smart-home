@@ -10,11 +10,18 @@ public abstract class AbstractTemperatureDevice extends AbstractStatefulDevice i
 
 	protected int currentTemp;
 
+	/**
+	 * @return currentTemp
+	 */
 	@Override
 	public int getTemperature() {
 		return currentTemp;
 	}
 
+	/**
+	 * @param temperature
+	 * sets the currentTemp as selected temperature
+	 */
 	@Override
 	public void setTemperature(int temperature) {
 		this.currentTemp = temperature;

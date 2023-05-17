@@ -11,6 +11,10 @@ import model.interfaces.StatefulInterface;
 
 public class JsonDataStructure {
 
+	/**
+	 * List of devices created for store the DeviceType
+	 * Due to polymorphism data for the DeviceType couldn't reach directly with Gson
+	 */
 	private List<AirConditioner> airConditioners;
 	private List<DishWasher> dishWashers;
 	private List<Fridge> fridges;
@@ -52,15 +56,15 @@ public class JsonDataStructure {
 	}
 
 	public void setAirConditioners(List<AirConditioner> airConditioners) {
+
 		this.airConditioners = airConditioners;
-
 	}
-
 	public List<DishWasher> getDishWashers() {
 		return this.dishWashers;
 	}
 
 	public void setDishWasher(List<DishWasher> dishWashers) {
+
 		this.dishWashers = dishWashers;
 	}
 
@@ -69,6 +73,7 @@ public class JsonDataStructure {
 	}
 
 	public void setFridges(List<Fridge> fridges) {
+
 		this.fridges = fridges;
 	}
 
@@ -77,7 +82,7 @@ public class JsonDataStructure {
 	}
 
 	public void setWashingMachines(List<WashingMachine> washingMachines) {
-		this.washingMachines = washingMachines;
 
+		this.washingMachines = washingMachines;
 	}
 }

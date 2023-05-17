@@ -18,6 +18,9 @@ import model.interfaces.StatefulInterface;
 import model.json.JsonDataStructure;
 
 public class DeviceService {
+	/**
+	 * ensures that a class can only have one object
+	 */
 	public static final DeviceService SINGLETON = new DeviceService();
 
 	private DeviceService() {
