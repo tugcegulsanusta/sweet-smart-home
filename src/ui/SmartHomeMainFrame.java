@@ -180,7 +180,7 @@ public class SmartHomeMainFrame {
 
 	/**
 	 * @param airConditioner
-	 * add AirConditioner to Panel
+	 * add AirConditionerPanel to Frame
 	 */
 	protected void addAirConditioner(AirConditioner airConditioner) {
 		AirConditionerPanel airConditionerPanel = new AirConditionerPanel(airConditioner, SmartHomeMainFrame.this);
@@ -189,7 +189,7 @@ public class SmartHomeMainFrame {
 
 	/**
 	 * @param fridge
-	 * add Fridge to Panel
+	 * add FridgePanel to Frame
 	 */
 	protected void addFridge(Fridge fridge) {
 		FridgePanel fridgePanel = new FridgePanel(fridge, SmartHomeMainFrame.this);
@@ -198,7 +198,7 @@ public class SmartHomeMainFrame {
 
 	/**
 	 * @param dishWasher
-	 * add DishWasher to Panel
+	 * add DishWasherPanel to Frame
 	 */
 	protected void addDishWasher(DishWasher dishWasher) {
 		DishWasherPanel dishWasherPanel = new DishWasherPanel(dishWasher, SmartHomeMainFrame.this);
@@ -207,7 +207,7 @@ public class SmartHomeMainFrame {
 
 	/**
 	 * @param washingMachine
-	 * add WashingMachine to Panel
+	 * add WashingMachinePanel to Frame
 	 */
 	protected void addWashingMachine(WashingMachine washingMachine) {
 

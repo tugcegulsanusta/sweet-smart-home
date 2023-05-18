@@ -19,13 +19,17 @@ import model.interfaces.StatefulInterface;
  */
 
 public abstract class AbstractDevicePanel extends JPanel {
-
 	protected final SmartHomeMainFrame mainFrame;
 	protected final StatefulInterface statefulInterface;
 	protected final JButton deleteButton;
 	protected final JLabel statusLabel;
 	private JComboBox statusBox;
 
+	/**
+	 * Constructor
+	 * @param mainFrame
+	 * @param statefulInterface
+	 */
 	public AbstractDevicePanel(SmartHomeMainFrame mainFrame, StatefulInterface statefulInterface) {
 		this.statefulInterface = statefulInterface;
 		this.mainFrame = mainFrame;
@@ -35,6 +39,7 @@ public abstract class AbstractDevicePanel extends JPanel {
 		statusLabel.setForeground(new Color(64, 0, 128));
 		refreshStatus();
 
+		//JButton for delete function
 		deleteButton = new JButton("Delete");
 		deleteButton.addActionListener(new ActionListener() {
 			@Override
@@ -48,6 +53,9 @@ public abstract class AbstractDevicePanel extends JPanel {
 		statusLabel.setBounds(201, 50, 150, 50);
 		add(statusLabel);
 
+		/**
+		 * Creates object array for storing availableStates
+		 */
 		Object[] statuses = statefulInterface.getAvailableStates().stream().toArray();
 
 		// create checkbox
@@ -68,10 +76,17 @@ public abstract class AbstractDevicePanel extends JPanel {
 
 	}
 
+	/**
+	 * method for refreshing the statusLabel
+	 */
 	private void refreshStatus() {
 		statusLabel.setText("Status: " + getCurrentState());
 	}
 
+	/**
+	 *
+	 * @return String currentState
+	 */
 	protected String getCurrentState() {
 		return statefulInterface.getCurrentState().toString();
 	}
