@@ -84,6 +84,9 @@ public class SmartHomeMainFrame {
 
 		centerPanel = new JPanel();
 		frmSweetSmartHome.getContentPane().add(centerPanel, BorderLayout.CENTER);
+		// I have specifically used GridLayout to equally divide center panel
+		// by the dynamic number of DevicePanels
+		// 2 rows x 3 columns => 6 ( panel count limit )
 		centerPanel.setLayout(new GridLayout(2, 3, 0, 0));
 
 		JButton airConditionerBtn = new JButton("Add Air Conditioner");
@@ -140,6 +143,7 @@ public class SmartHomeMainFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				devicePanels.forEach(SmartHomeMainFrame.this::removePanel);
+
 				JFileChooser chooser = new JFileChooser();
 				chooser.showOpenDialog(null);
 				File file = chooser.getSelectedFile();
@@ -166,6 +170,15 @@ public class SmartHomeMainFrame {
 			public void actionPerformed(ActionEvent e) {
 				List<StatefulInterface> devices = devicePanels.stream().map(AbstractDevicePanel::getStatefulInterface)
 						.toList();
+
+				/*
+				List<StatefulInterface> devices = new ArrayList<>();
+				for(AbstractDevicePanel adp: devicePanels ){
+					StatefulInterface si = adp.getStatefulInterface();
+					devices.add(si);
+				}
+				*/
+
 				JFileChooser chooser = new JFileChooser();
 				chooser.showOpenDialog(null);
 				File file = chooser.getSelectedFile();

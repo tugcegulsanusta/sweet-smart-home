@@ -53,9 +53,8 @@ public class DeviceService {
 	/**
 	 * @param devices
 	 * @param jsonFilePath
-	 * saveAll function creates a file with Gson and FileWriter
+	 * creates a file with Gson and FileWriter
 	 * to save without losing data, JsonDataStructure object needs to be created
-	 * used in SmartHomeMainFrame - btnSaveButton action connected with this function
 	 */
 	public void saveAll(List<StatefulInterface> devices, String jsonFilePath) {
 		JsonDataStructure dataStructure = new JsonDataStructure();
@@ -75,9 +74,8 @@ public class DeviceService {
 	/**
 	 * @param jsonFilePath
 	 * @return JsonDataStructure
-	 * load function reads a file via BufferedReader
+	 * reads a file via BufferedReader
 	 * loads devices to the system in lexicographical order
-	 * used in SmartHomeMainFrame - btnLoadButton action connected with this function
 	 */
 	public JsonDataStructure load(String jsonFilePath) {
 

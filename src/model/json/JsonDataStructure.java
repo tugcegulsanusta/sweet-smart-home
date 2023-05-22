@@ -14,6 +14,10 @@ public class JsonDataStructure {
 	/**
 	 * List of devices created for store the DeviceType
 	 * Due to polymorphism data for the DeviceType couldn't reach directly with Gson
+	 *
+	 * You can check issue of Gson below:
+	 * First class support for polymorphism (subclasses!)
+	 * https://github.com/google/gson/issues/231
 	 */
 	private List<AirConditioner> airConditioners;
 	private List<DishWasher> dishWashers;
@@ -21,7 +25,8 @@ public class JsonDataStructure {
 	private List<WashingMachine> washingMachines;
 
 	/**
-	 * Takes device List,creates new object corresponding List
+	 * Initialize ArrayList for each deviceType
+	 * to avoid null pointer exception
 	 */
 	public JsonDataStructure() {
 		airConditioners = new ArrayList<>();
@@ -51,9 +56,6 @@ public class JsonDataStructure {
 		}
 	}
 
-	/**
-	 * getter/setter for each specific device list
-	 */
 	public List<AirConditioner> getAirConditioners() {
 		return this.airConditioners;
 	}
