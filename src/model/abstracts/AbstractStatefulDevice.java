@@ -4,7 +4,8 @@ import model.enums.DeviceState;
 import model.interfaces.StatefulInterface;
 
 /**
- *  AbstractStateful class is created for all devices. Devices has DeviceState enums : OPENED, CLOSED, RUNNING, PAUSED.
+ *  AbstractStateful class is created for all devices.
+ *  Devices has DeviceState enums : OPENED, CLOSED, RUNNING, PAUSED.
  *  Paused only applicable for ProgramDevice: DishWasher, WashingMachine
  */
 

@@ -25,26 +25,30 @@ public class DeviceService {
 	}
 
 	/**
-	 * newDeviceType convention
-	 * @return object for each device
-	 * used in SmartHomeMainFrame
+	 * @return a new DishWasher device
 	 */
 	public DishWasher newDishWasher() {
 
 		return new DishWasher();
 
 	}
-
+	/**
+	 * @return a new WashingMachine device
+	 */
 	public WashingMachine newWashingMachine() {
 
 		return new WashingMachine();
 	}
-
+	/**
+	 * @return a new AirConditioner device
+	 */
 	public AirConditioner newAirConditioner() {
 
 		return new AirConditioner();
 	}
-
+	/**
+	 * @return a new Fridge device
+	 */
 	public Fridge newFridge() {
 
 		return new Fridge();

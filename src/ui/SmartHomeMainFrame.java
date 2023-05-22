@@ -89,6 +89,9 @@ public class SmartHomeMainFrame {
 		// 2 rows x 3 columns => 6 ( panel count limit )
 		centerPanel.setLayout(new GridLayout(2, 3, 0, 0));
 
+		/*
+		Create a button for adding AirConditioner device
+		 */
 		JButton airConditionerBtn = new JButton("Add Air Conditioner");
 		airConditionerBtn.addActionListener(new ActionListener() {
 			@Override
@@ -97,7 +100,9 @@ public class SmartHomeMainFrame {
 			}
 		});
 		leftPanel.add(airConditionerBtn);
-
+		/*
+		Create a button for adding Fridge device
+		 */
 		JButton addFridgeBtn = new JButton("Add Fridge");
 		addFridgeBtn.addActionListener(new ActionListener() {
 			@Override
@@ -107,6 +112,9 @@ public class SmartHomeMainFrame {
 		});
 		leftPanel.add(addFridgeBtn);
 
+		/*
+		Create a button for adding Dishwasher device
+		 */
 		JButton addDishWasherBtn = new JButton("Add Dishwasher");
 		addDishWasherBtn.addActionListener(new ActionListener() {
 			@Override
@@ -118,6 +126,9 @@ public class SmartHomeMainFrame {
 
 		leftPanel.add(addDishWasherBtn);
 
+		/*
+		Create a button for adding WashingMachine device
+		 */
 		JButton addWashingMachineBtn = new JButton("Add Washing Machine");
 		addWashingMachineBtn.addActionListener(new ActionListener() {
 			@Override
@@ -132,6 +143,8 @@ public class SmartHomeMainFrame {
 		frmSweetSmartHome.getContentPane().add(northPanel, BorderLayout.NORTH);
 		northPanel.setLayout(new GridLayout(1, 0, 0, 0));
 
+
+		//create button for load a file
 		JButton btnLoadButton = new JButton("Load");
 		northPanel.add(btnLoadButton);
 
@@ -158,6 +171,8 @@ public class SmartHomeMainFrame {
 
 		});
 
+
+		//create button for save to a file
 		JButton btnSaveButton = new JButton("Save");
 		northPanel.add(btnSaveButton);
 
